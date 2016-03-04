@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>SKY HOTEL</title>
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Pinyon+Script' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Quicksand:400,700' rel='stylesheet' type='text/css'>
+        <link href="css/bootstrap.css" rel='stylesheet' type='text/css'/>
+        <link href="css/style.css" rel="stylesheet" type="text/css" media="all"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="js/jquery.min.js"></script>
+    </head>
+    <body>
+        <div class="header">
+            <div class="top-header">
+                <div class="container">
+                    <div class="logo">
+                        <a href="index.html"><img src="images/logo.png"/></a>
+                    </div>
+                    <span class="menu"> </span>
+                    <div class="m-clear"></div>
+                    <div class="top-menu">
+                        <ul>
+                            <li class="active"><a href="index.html">HOME</a></li>
+                            <li><a class="scroll" href="aboutsky.html">ABOUT SKY</a></li>
+                            <li><a class="scroll" href="booking.html">BOOKING</a></li>
+                            <li><a class="scroll" href="contact.html">CONTACT US</a></li>
+                            <li><a class="scroll" href="login.xhtml">LOGIN</a></li>
+                        </ul>
+                        <script>
+                            $("span.menu").click(function () {
+                                $(".top-menu ul").slideToggle(200);
+                            });
+                        </script>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <div class="banner">
+                <div class="banner-info text-center">
+                    <h1>SKY HOTEL</h1>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+        <!---->
+        <div class="package text-center">
+            <div class="container">
+                <h3>About Us</h3>
+                <p>Sky Hotel was founded in Linköping during 2009. Since 2011 we are also situated in Stockholm. 
+                    The name, Sky, was inspired by the place where it all began – on the 19th floor in Linköping’s tallest residential building: Tornet. 
+                    Today, the name is also a reminder for ourselves to always aim a little higher in everything we do.</p>
+                <!-- requried-jsfiles-for owl -->
+                <link href="css/owl.carousel.css" rel="stylesheet">
+                <script src="js/owl.carousel.js"></script>
+                <script>
+                            $(document).ready(function () {
+                                $("#owl-demo").owlCarousel({
+                                    items: 1,
+                                    lazyLoad: true,
+                                    autoPlay: true,
+                                    navigation: true,
+                                    navigationText: false,
+                                    pagination: false,
+                                });
+                            });
+                </script>
+                <!-- //requried-jsfiles-for owl -->
+                <div id="owl-demo" class="owl-carousel">
+                    <div class="item text-center image-grid">	
+                        <ul>
+                            <li><img src="images/1.jpg" alt=""></li>			    
+                            <li><img src="images/2.jpg" alt=""></li>				 
+                            <li><img src="images/3.jpg" alt=""></li>
+                        </ul>
+                    </div>
+                    <div class="item text-center image-grid">	
+                        <ul>
+                            <li> <img src="images/4.jpg" alt=""></li>			    
+                            <li><img src="images/5.jpg" alt=""></li>				 
+                            <li><img src="images/6.jpg" alt=""></li>
+                        </ul>
+                    </div>
+                    <div class="item text-center image-grid">	
+                        <ul>
+                            <li> <img src="images/7.jpg" alt=""></li>			    
+                            <li><img src="images/8.jpg" alt=""></li>				 
+                            <li><img src="images/9.jpg" alt=""></li>
+                        </ul>
+                    </div>
+                </div> 		
+            </div>
+        </div>
+    </body>
+</html>
