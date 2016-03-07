@@ -19,11 +19,17 @@
             <div class="col-md-12 nav-wrapper">
                 <div class="navbar-header" style="width:100%;">
                     <a href="index.html" class="navbar-brand"> 
-                        <b>STAFF MANAGEMENT</b>
+                        <b>Manager MANAGEMENT</b>
                     </a>
 
                     <ul class="nav navbar-nav navbar-right user-nav">
-                        <li><a href="logout.xhtml">LOG OUT</a></li>
+                        <li>
+                            <a>
+                                <h:form>
+                                    <h:commandButton action="#{accountManagedBean.logout()}" value="Logout"/>
+                                </h:form>
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -37,12 +43,12 @@
                 <div class="sub-left-menu scroll">
                     <ul class="nav nav-list">
                         <li class="user-name"><span>Manager</span></li>
-                        <li class="active ripple">
-                            <a href="#"> Main 
+                        <li class="ripple">
+                            <a href="manager.xhtml"> Main 
                                 <span class="fa-angle-right fa right-arrow text-right"></span>
                             </a>
                         </li>
-                        <li class="ripple">
+                        <li class="active ripple">
                             <a href="create.xhtml"> Create account
                                 <span class="fa-angle-right fa right-arrow text-right"></span>
                             </a>

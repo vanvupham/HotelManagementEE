@@ -279,5 +279,48 @@ public class AccountManagedBean {
             return null;
         }
     }
-
+    
+    public String editAccount(int id) {
+        try {
+            AccountStub accountStub = new AccountStub();
+            account = accountStub.find(id);
+            return "editAccount";
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return null;
+        }
+    }
+    
+    public String edit(){
+        message="";
+        try{
+            AccountStub accountStub = new AccountStub();
+            Account newAccount = new Account();
+            newAccount.setAccountID(account.getAccountID());
+            newAccount.setUsername(account.getUsername());
+            newAccount.setPassword(account.getPassword());
+            newAccount.setFirstName(account.getFirstName());
+            newAccount.setLastName(account.getLastName());
+            newAccount.setIdCard(account.getIdCard());
+            newAccount.setDob(account.getDob());
+            newAccount.setTel(account.getTel());
+            newAccount.setGender(account.getGender());
+            newAccount.setAddress(account.getAddress());
+            newAccount.setEmail(account.getEmail());
+            if (position.equalsIgnoreCase("M")) {
+                newAccount.setAccountTypeId(new Accounttype(1));
+            }
+            if (position.equalsIgnoreCase("S")) {
+                newAccount.setAccountTypeId(new Accounttype(2));
+            }
+            if (position.equalsIgnoreCase("R")) {
+                newAccount.setAccountTypeId(new Accounttype(3));
+            }
+            accountStub.edit(newAccount);
+            return message="Successfully";
+        }catch(Exception ex){
+            ex.printStackTrace();
+            return null;
+        }
+    }
 }

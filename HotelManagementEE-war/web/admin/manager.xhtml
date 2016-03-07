@@ -81,46 +81,7 @@
                 <div class="col-md-12 top-20 padding-0">
                     <div class="col-md-12">
                         <div class="panel">
-
-                            <div class="panel-heading"><h3>Data Tables</h3></div>
-                            <div class="panel-body">
-                                <div class="responsive-table">
-                                    <table id="datatables-example" class="table table-striped table-bordered" width="100%" cellspacing="0">
-                                        <thead>
-                                            <tr>
-                                                <th>User Name</th>
-                                                <th>First Name</th>
-                                                <th>Last Name</th>
-                                                <th>Gender</th>
-                                                <th>DOB</th>
-                                                <th>Address</th>
-                                                <th>Email</th>
-                                                <th>Id card</th>
-                                                <th>Tel</th>
-                                                <th>Position</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody> 
-                                            <tr>
-                                                <h:dataTable var="item" value="#{accountManagedBean.findAll()}">
-                                                    <h:column>#{item.username}</h:column>
-                                                    <h:column>#{item.firstName}</h:column>
-                                                    <h:column>#{item.lastName}</h:column>
-                                                    <h:column>#{item.gender}</h:column>
-                                                    <h:column><h:outputLabel value="#{item.dob}">
-                                                            <f:convertDateTime pattern="dd-MM-yyyy" timeZone="GMT+7"/>
-                                                        </h:outputLabel></h:column>
-                                                    <h:column>#{item.address}</h:column>
-                                                    <h:column>#{item.email}</h:column>
-                                                    <h:column>#{item.idCard}</h:column>
-                                                    <h:column>#{item.tel}</h:column>
-                                                    <h:column>#{item.accountTypeId.accountTypeName}</h:column>
-                                                </h:dataTable>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
+                            <h3>Welcome Manager #{session.getAttribute("username")}</h3>
                         </div>
                     </div>  
                 </div>
