@@ -6,19 +6,13 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
         <!-- start: Css -->
-        <link rel="stylesheet" type="text/css" href="../css/adminbootstrap.min.css"/>
+        <link rel="stylesheet" type="text/css" href="../asset/css/bootstrap.min.css"/>
         <!-- plugins -->
-        <link rel="stylesheet" type="text/css" href="../css/plugins/font-awesome.min.css"/>
-        <link rel="stylesheet" type="text/css" href="../css/plugins/datatables.bootstrap.min.css"/>
-        <link rel="stylesheet" type="text/css" href="../css/plugins/animate.min.css"/>
-        <link href="../css/adminstyle.css" rel="stylesheet"/>
+        <link rel="stylesheet" type="text/css" href="../asset/css/plugins/font-awesome.min.css"/>
+        <link rel="stylesheet" type="text/css" href="../asset/css/plugins/datatables.bootstrap.min.css"/>
+        <link rel="stylesheet" type="text/css" href="../asset/css/plugins/animate.min.css"/>
+        <link href="../asset/css/style.css" rel="stylesheet"/>
         <!-- end: Css -->
-        <!--bootstrap MODAL-->
-        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
-        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-        <!-- end bootstrap-->
     </h:head>
     <h:body id="mimin" class="dashboard">
         <!-- start: Header -->
@@ -60,12 +54,12 @@
                                 <span class="fa-angle-right fa right-arrow text-right"></span>
                             </a>
                         </li>
-                        <li class="ripple">
+                        <li class="active ripple">
                             <a href="edit.xhtml"> Edit account
                                 <span class="fa-angle-right fa right-arrow text-right"></span>
                             </a>
                         </li>
-                        <li class="active ripple">
+                        <li class="ripple">
                             <a href="view.xhtml"> View account  
                                 <span class="fa-angle-right fa right-arrow text-right"></span> </a>
                         </li>
@@ -73,7 +67,11 @@
                             <a href="delete.xhtml"> Delete account  
                                 <span class="fa-angle-right fa right-arrow text-right"></span> </a>
                         </li>
-
+                        <li class="ripple">
+                            <a href="changePass.xhtml"> Change Pass
+                                <span class="fa-angle-right fa right-arrow text-right"></span>
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>

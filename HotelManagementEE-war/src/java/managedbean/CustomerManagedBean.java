@@ -13,6 +13,7 @@ import java.util.Date;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import stub.CustomerStub;
 
 /**
  *
@@ -28,6 +29,7 @@ public class CustomerManagedBean {
      * Creates a new instance of CustomerManagedBean
      */
     public CustomerManagedBean() {
+        customer = new Customer();
     }
 
     public Integer getCustomerId() {
@@ -142,4 +144,12 @@ public class CustomerManagedBean {
         this.listCustomer = listCustomer;
     }
     
+    public void addCustomer(){
+        try{
+            CustomerStub customerStub = new CustomerStub();
+            customerStub.create(customer);
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }
+    }
 }

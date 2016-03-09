@@ -14,6 +14,7 @@ import java.util.Date;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import stub.CheckinStub;
 
 /**
  *
@@ -29,6 +30,7 @@ public class CheckinManagedBean {
      * Creates a new instance of CheckinManagedBean
      */
     public CheckinManagedBean() {
+        checkin = new Checkin();
     }
 
     public Integer getCheckinId() {
@@ -151,4 +153,18 @@ public class CheckinManagedBean {
         this.listCheckin = listCheckin;
     }
     
+//    public String addCheckin(){
+//        message="";
+//        try{
+//            CheckinStub checkinStub = new CheckinStub();
+//            Checkin newCheckin = new Checkin();
+//            newCheckin.setDateIn(checkin.getDateIn());
+//            newCheckin.setDateOut(checkin.getDateOut());
+//            newCheckin.setDiscount(checkin.getDiscount());
+//            newCheckin.setTax(checkin.getTax());
+//            
+//        }catch(Exception ex){
+//            message=getMessage();
+//        }
+//    }
 }

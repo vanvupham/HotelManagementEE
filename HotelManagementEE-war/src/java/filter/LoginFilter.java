@@ -35,7 +35,6 @@ public class LoginFilter implements Filter {
         HttpServletRequest hrequest = (HttpServletRequest) request;
         HttpSession session = hrequest.getSession();
         String user = (String) session.getAttribute("username");
-
         String contextPath = ((HttpServletRequest) request).getContextPath();
         
 	// For the first application request there is no loginBean in the session so user needs to log in
@@ -43,6 +42,7 @@ public class LoginFilter implements Filter {
         if (user == null || contextPath.contains("login")) {
             ((HttpServletResponse) response).sendRedirect(contextPath + "/login.xhtml");
         }
+        
 
         chain.doFilter(request, response);
 

@@ -25,6 +25,7 @@ public class ReservationManagedBean {
      * Creates a new instance of ReservationManagedBean
      */
     public ReservationManagedBean() {
+        reservation = new Reservation();
     }
 
     public Integer getReservationId() {

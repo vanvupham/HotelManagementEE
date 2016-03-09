@@ -3,15 +3,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html">
     <h:head>
-        <title>Hotel SKY</title>
+        <title>SKY HOTEL</title>
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'/>
         <link href='http://fonts.googleapis.com/css?family=Pinyon+Script' rel='stylesheet' type='text/css'/>
         <link href='http://fonts.googleapis.com/css?family=Quicksand:400,700' rel='stylesheet' type='text/css'/>
         <link href="css/bootstrap.css" rel='stylesheet' type='text/css'/>
-        <link href="css/stylelogin.css" rel="stylesheet" type="text/css" media="all"/>
-        <link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap.min.css" />
-        <link rel="stylesheet" type="text/css" href="assets/css/styles.css" />
-        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link href="css/style.css" rel="stylesheet" type="text/css" media="all"/>
+        <link rel="stylesheet" type="text/css" href="logincss/bootstrap/css/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" href="logincss/css/styles.css" />
         <script src="js/jquery.min.js"></script>
     </h:head>
     <h:body>
@@ -48,7 +47,6 @@
             </div>
         </div>
         <!---->
-        <!--Form Login-->
         <section class="container">
             <section class="login-form">
                 <h:form role="login">
@@ -57,7 +55,7 @@
                     <h:inputText class="form-control input-lg" value="#{accountManagedBean.user}"/> 
                     <h:outputLabel for="password" value="Password :"/>
                     <h:inputSecret class="form-control input-lg" value="#{accountManagedBean.pass}"/>
-                    
+
                     <h:commandButton class="btn btn-lg btn-primary btn-block" value="Login" 
                                      action="#{accountManagedBean.login()}"/>
                 </h:form>

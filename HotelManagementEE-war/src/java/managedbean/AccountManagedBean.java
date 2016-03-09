@@ -31,6 +31,9 @@ public class AccountManagedBean {
     private String user;
     private String pass;
     private String position;
+    private String oldPass;
+    private String newPass;
+    private String conPass;
     private List<Account> listAccount;
     private boolean loggedIn;
 
@@ -194,6 +197,30 @@ public class AccountManagedBean {
         this.loggedIn = loggedIn;
     }
 
+    public String getOldPass() {
+        return oldPass;
+    }
+
+    public void setOldPass(String oldPass) {
+        this.oldPass = oldPass;
+    }
+
+    public String getNewPass() {
+        return newPass;
+    }
+
+    public void setNewPass(String newPass) {
+        this.newPass = newPass;
+    }
+
+    public String getConPass() {
+        return conPass;
+    }
+
+    public void setConPass(String conPass) {
+        this.conPass = conPass;
+    }
+
     public String login() {
         String url = "";
         try {
@@ -279,7 +306,7 @@ public class AccountManagedBean {
             return null;
         }
     }
-    
+
     public String editAccount(int id) {
         try {
             AccountStub accountStub = new AccountStub();
@@ -290,10 +317,10 @@ public class AccountManagedBean {
             return null;
         }
     }
-    
-    public String edit(){
-        message="";
-        try{
+
+    public String edit() {
+        message = "";
+        try {
             AccountStub accountStub = new AccountStub();
             Account newAccount = new Account();
             newAccount.setAccountID(account.getAccountID());
@@ -317,9 +344,63 @@ public class AccountManagedBean {
                 newAccount.setAccountTypeId(new Accounttype(3));
             }
             accountStub.edit(newAccount);
-            return message="Successfully";
-        }catch(Exception ex){
+            return message = "Successfully";
+        } catch (Exception ex) {
             ex.printStackTrace();
+            return null;
+        }
+    }
+
+    public String delete(int id) {
+        message = "";
+        try {
+            AccountStub accountStub = new AccountStub();
+            account = accountStub.find(id);
+            accountStub.remove(account);
+            account = new Account();
+            return message;
+        } catch (Exception ex) {
+            message = getMessage();
+            return null;
+        }
+    }
+
+    public String changePass() {
+        message = "";
+        try {
+            AccountStub accountStub = new AccountStub();
+            HttpSession session = SessionBean.getSession();
+            String userName = (String) session.getAttribute("username");           
+            account = accountStub.findUserName(userName);
+            MD5 md5 = new MD5();
+            String oldPassMD5 = md5.MD5(oldPass);
+            String newPassMD5 = md5.MD5(newPass);
+            String conPassMD5 = md5.MD5(conPass);
+            if (oldPassMD5.equalsIgnoreCase(account.getPassword())) {
+                if (newPassMD5.equals(conPassMD5)) {
+                    Account newAccount = new Account();
+                    newAccount.setAccountID(account.getAccountID());
+                    newAccount.setUsername(account.getUsername());
+                    newAccount.setPassword(newPassMD5);
+                    newAccount.setFirstName(account.getFirstName());
+                    newAccount.setLastName(account.getLastName());
+                    newAccount.setIdCard(account.getIdCard());
+                    newAccount.setDob(account.getDob());
+                    newAccount.setTel(account.getTel());
+                    newAccount.setGender(account.getGender());
+                    newAccount.setAddress(account.getAddress());
+                    newAccount.setEmail(account.getEmail());
+                    newAccount.setAccountTypeId(account.getAccountTypeId());
+                    accountStub.edit(newAccount);
+                }else{
+                    message="Password does not match the confirm password";
+                }
+            }else{
+                message="Password not availble";
+            }
+            return message="Password has been changed";
+        }catch(Exception ex){
+            message=getMessage();
             return null;
         }
     }

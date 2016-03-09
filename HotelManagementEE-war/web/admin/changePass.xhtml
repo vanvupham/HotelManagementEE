@@ -1,0 +1,139 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <!-- start: Css -->
+        <link rel="stylesheet" type="text/css" href="../asset/css/bootstrap.min.css"/>
+        <!-- plugins -->
+        <link rel="stylesheet" type="text/css" href="../asset/css/plugins/font-awesome.min.css"/>
+        <link rel="stylesheet" type="text/css" href="../asset/css/plugins/datatables.bootstrap.min.css"/>
+        <link rel="stylesheet" type="text/css" href="../asset/css/plugins/animate.min.css"/>
+        <link href="../asset/css/style.css" rel="stylesheet"/>
+        <!-- end: Css -->
+    </h:head>
+    <h:body id="mimin" class="dashboard">
+        <!-- start: Header -->
+        <nav class="navbar navbar-default header navbar-fixed-top">
+            <div class="col-md-12 nav-wrapper">
+                <div class="navbar-header" style="width:100%;">
+                    <a href="index.html" class="navbar-brand"> 
+                        <b>Manager MANAGEMENT</b>
+                    </a>
+
+                    <ul class="nav navbar-nav navbar-right user-nav">
+                        <li>
+                            <a>
+                                <h:form>
+                                    <h:commandButton action="#{accountManagedBean.logout()}" value="Logout"/>
+                                </h:form>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- end: Header -->
+
+        <div class="container-fluid mimin-wrapper">
+
+            <!-- start:Left Menu -->
+            <div id="left-menu">
+                <div class="sub-left-menu scroll">
+                    <ul class="nav nav-list">
+                        <li class="user-name"><span>Manager</span></li>
+                        <li class="ripple">
+                            <a href="manager.xhtml"> Main 
+                                <span class="fa-angle-right fa right-arrow text-right"></span>
+                            </a>
+                        </li>
+                        <li class="ripple">
+                            <a href="create.xhtml"> Create account
+                                <span class="fa-angle-right fa right-arrow text-right"></span>
+                            </a>
+                        </li>
+                        <li class="ripple">
+                            <a href="edit.xhtml"> Edit account
+                                <span class="fa-angle-right fa right-arrow text-right"></span>
+                            </a>
+                        </li>
+                        <li class="ripple">
+                            <a href="view.xhtml"> View account  
+                                <span class="fa-angle-right fa right-arrow text-right"></span> </a>
+                        </li>
+                        <li class="ripple">
+                            <a href="delete.xhtml"> Delete account  
+                                <span class="fa-angle-right fa right-arrow text-right"></span> </a>
+                        </li>
+                        <li class="active ripple">
+                            <a href="changePass.xhtml"> Change Pass
+                                <span class="fa-angle-right fa right-arrow text-right"></span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- end: Left Menu -->
+
+            <!-- start: Content -->
+            <div id="content">
+                <div class="col-md-12 top-20 padding-0">
+                    <div class="col-md-12">
+                        <div class="panel">
+                            <div class="panel-body">
+                                <div class="responsive-table">
+                                    <table id="staff-datatables" class="table table-striped table-bordered" width="100%" cellspacing="0">
+                                        <h:form>                                            
+                                            <table>
+                                                <th>
+                                                    <h:panelGrid columns="2" class="tablecreate">
+                                                        <h:outputLabel for="oldPass" value="Old Password :"/>
+                                                        <h:inputSecret id="oldPass" value="#{accountManagedBean.oldPass}"/>
+                                                        <h:outputLabel for="newPass" value="New Password :"/>
+                                                        <h:inputSecret id="newPass" value="#{accountManagedBean.newPass}"/>
+                                                        <h:outputLabel for="conPass" value="Confirm Password :"/>
+                                                        <h:inputSecret id="conPass" value="#{accountManagedBean.conPass}"/>
+                                                        <h:outputLabel/>
+                                                        <h:commandButton value="Save" action="#{accountManagedBean.changePass()}"/>
+                                                    </h:panelGrid>
+                                                    <hr/>
+                                                    <h:outputText value="#{accountManagedBean.message}"/>
+                                                </th>
+                                            </table>
+                                        </h:form>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>  
+                </div>
+            </div>
+        </div>
+
+        <!-- end: content -->
+
+
+        <!-- start: Javascript -->
+        <script src="../js/jquery.min.js"></script>
+        <script src="../js/jquery.ui.min.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
+
+        <!-- plugins -->
+        <script src="../js/plugins/moment.min.js"></script>
+        <script src="../js/plugins/jquery.datatables.min.js"></script>
+        <script src="../js/plugins/datatables.bootstrap.min.js"></script>
+        <script src="../js/plugins/jquery.nicescroll.js"></script>
+
+        <!-- custom -->
+        <script src="../js/main.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('#staff-datatables').DataTable();
+            });
+        </script>
+        <!-- end: Javascript -->
+    </h:body>
+</html>
+
