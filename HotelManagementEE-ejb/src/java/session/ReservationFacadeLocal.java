@@ -27,6 +27,8 @@ public interface ReservationFacadeLocal {
     List<Reservation> findAll();
 
     List<Reservation> findRange(int[] range);
+    
+    List<Reservation> findByRoomId(int roomid);
 
     int count();
     

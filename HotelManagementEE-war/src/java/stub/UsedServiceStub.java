@@ -18,7 +18,7 @@ import session.UsedserviceFacadeLocal;
  *
  * @author Willi
  */
-public class UsedService {
+public class UsedServiceStub {
     UsedserviceFacadeLocal usedserviceFacade = lookupUsedserviceFacadeLocal();
 
     private UsedserviceFacadeLocal lookupUsedserviceFacadeLocal() {

@@ -1,7 +1,9 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
         <title>SKY HOTEL</title>
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'/>
@@ -10,9 +12,9 @@
         <link href="css/bootstrap.css" rel='stylesheet' type='text/css'/>
         <link href="css/style.css" rel="stylesheet" type="text/css" media="all"/>
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-        <link rel="stylesheet" type="text/css" href="css/jquery.datepick.css"/> 
-        <script type="text/javascript" src="js/jquery.plugin.js"></script> 
-        <script type="text/javascript" src="js/jquery.datepick.js"></script>
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"/>
+        <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+        <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
         <script src="js/jquery.min.js"></script>
     </h:head>
     <h:body>
@@ -52,22 +54,33 @@
         <div class="package text-center">
             <div class="container">
                 <h:form>
-                    <table>
-                        <h:outputLabel value="Start Date"/>
-                        <h:inputText id="dateS" class="date" />
-                        <h:outputLabel value="End Date"/>
-                        <h:inputText id="dateE" class="date"/>
-                    </table>
+                    <h:outputLabel for="startDate" value="startDate"/>
+                    <h:inputText id="startDate" value="#{reservationManagedBean.start}" 
+                                 required="true"
+                                 label="Date" >
+                        <f:convertDateTime pattern="d-M-yyyy" timeZone="GMT+7"/>
+                    </h:inputText>
+                    <h:outputLabel for="startEnd" value="startEnd"/>
+                    <h:inputText id="startEnd" value="#{reservationManagedBean.end}" 
+                                 required="true"
+                                 label="Date" >
+                        <f:convertDateTime pattern="d-M-yyyy" timeZone="GMT+7"/>
+                    </h:inputText>
+                    <h:outputLabel for="person" value="person"/>
+                    <h:inputText id="person" value="#{reservationManagedBean.person}"/>
+                    <h:commandButton value="Search" 
+                                     action="#{reservationManagedBean.findRoomForReservation
+                                               (reservationManagedBean.start, reservationManagedBean.end)}"/>
+
+                    <h:dataTable value="#{reservationManagedBean.listRoomEmpty}" var="item"> 
+                        <h:column>
+                            #{item.roomName}
+                        </h:column>
+                    </h:dataTable>
                 </h:form>
             </div>
         </div>
-        <!--strat-date-piker-->
-        <script>
-            $("input.date").click(function() {
-               $("#dateS,#dateE").datepick(); 
-            });
-        </script>
-        <!--End-date-piker-->
+
     </h:body>
 </html>
 

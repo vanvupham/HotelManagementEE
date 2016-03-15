@@ -6,9 +6,11 @@
 package session;
 
 import entity.Room;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -16,6 +18,7 @@ import javax.persistence.PersistenceContext;
  */
 @Stateless
 public class RoomFacade extends AbstractFacade<Room> implements RoomFacadeLocal {
+
     @PersistenceContext(unitName = "HotelManagementEE-ejbPU")
     private EntityManager em;
 
@@ -27,5 +30,19 @@ public class RoomFacade extends AbstractFacade<Room> implements RoomFacadeLocal 
     public RoomFacade() {
         super(Room.class);
     }
-    
+
+    @Override
+    public List<Room> findByRoomTypeId(int typeId) {
+        em = getEntityManager();
+        try{
+            Query query = em.createNamedQuery("Room.findByRoomTypeId");
+            query.setParameter("roomTypeId", typeId);
+            return query.getResultList();
+        }catch(Exception ex){
+            ex.printStackTrace();
+            return null;
+        }
+    }
+
+
 }

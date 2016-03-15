@@ -5,6 +5,7 @@
  */
 package stub;
 
+import entity.Room;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -17,7 +18,7 @@ import session.RoomFacadeLocal;
  *
  * @author Willi
  */
-public class Room {
+public class RoomStub {
     RoomFacadeLocal roomFacade = lookupRoomFacadeLocal();
 
     private RoomFacadeLocal lookupRoomFacadeLocal() {
@@ -30,32 +31,36 @@ public class Room {
         }
     }
 
-    public void create(entity.Room room) {
+    public void create(Room room) {
         roomFacade.create(room);
     }
 
-    public void edit(entity.Room room) {
+    public void edit(Room room) {
         roomFacade.edit(room);
     }
 
-    public void remove(entity.Room room) {
+    public void remove(Room room) {
         roomFacade.remove(room);
     }
 
-    public entity.Room find(Object id) {
+    public Room find(Object id) {
         return roomFacade.find(id);
     }
 
-    public List<entity.Room> findAll() {
+    public List<Room> findAll() {
         return roomFacade.findAll();
     }
 
-    public List<entity.Room> findRange(int[] range) {
+    public List<Room> findRange(int[] range) {
         return roomFacade.findRange(range);
     }
 
     public int count() {
         return roomFacade.count();
+    }
+
+    public List<Room> findByRoomTypeId(int roomTypeId) {
+        return roomFacade.findByRoomTypeId(roomTypeId);
     }
     
 }

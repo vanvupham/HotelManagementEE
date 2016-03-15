@@ -27,6 +27,8 @@ public interface RoomtypeFacadeLocal {
     List<Roomtype> findAll();
 
     List<Roomtype> findRange(int[] range);
+    
+    List<Roomtype> findByPeople(int people);
 
     int count();
     

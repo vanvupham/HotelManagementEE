@@ -5,6 +5,7 @@
  */
 package stub;
 
+import entity.Reservation;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -17,7 +18,7 @@ import session.ReservationFacadeLocal;
  *
  * @author Willi
  */
-public class Reservation {
+public class ReservationStub {
     ReservationFacadeLocal reservationFacade = lookupReservationFacadeLocal();
 
     private ReservationFacadeLocal lookupReservationFacadeLocal() {
@@ -56,6 +57,10 @@ public class Reservation {
 
     public int count() {
         return reservationFacade.count();
+    }
+
+    public List<Reservation> findByRoomId(int roomid) {
+        return reservationFacade.findByRoomId(roomid);
     }
     
 }

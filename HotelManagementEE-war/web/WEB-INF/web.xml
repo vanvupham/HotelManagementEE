@@ -13,6 +13,16 @@
         <url-pattern>/admin/*</url-pattern>
         <dispatcher>REQUEST</dispatcher>
     </filter-mapping>
+    <filter-mapping>
+        <filter-name>LoginFilter</filter-name>
+        <url-pattern>/staff/*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>LoginFilter</filter-name>
+        <url-pattern>/receptionist/*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+    </filter-mapping>
     <servlet>
         <servlet-name>Faces Servlet</servlet-name>
         <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
@@ -95,5 +105,17 @@
         <ejb-ref-type>Session</ejb-ref-type>
         <local>session.UsedserviceFacadeLocal</local>
         <ejb-link>HotelManagementEE-ejb.jar#UsedserviceFacade</ejb-link>
+    </ejb-local-ref>
+    <ejb-local-ref>
+        <ejb-ref-name>RoomFacade1</ejb-ref-name>
+        <ejb-ref-type>Session</ejb-ref-type>
+        <local>session.RoomFacadeLocal</local>
+        <ejb-link>HotelManagementEE-ejb.jar#RoomFacade</ejb-link>
+    </ejb-local-ref>
+    <ejb-local-ref>
+        <ejb-ref-name>RoomtypeFacade1</ejb-ref-name>
+        <ejb-ref-type>Session</ejb-ref-type>
+        <local>session.RoomtypeFacadeLocal</local>
+        <ejb-link>HotelManagementEE-ejb.jar#RoomtypeFacade</ejb-link>
     </ejb-local-ref>
 </web-app>

@@ -42,8 +42,6 @@ public class LoginFilter implements Filter {
         if (user == null || contextPath.contains("login")) {
             ((HttpServletResponse) response).sendRedirect(contextPath + "/login.xhtml");
         }
-        
-
         chain.doFilter(request, response);
 
     }

@@ -6,9 +6,11 @@
 package session;
 
 import entity.Roomtype;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -26,6 +28,19 @@ public class RoomtypeFacade extends AbstractFacade<Roomtype> implements Roomtype
 
     public RoomtypeFacade() {
         super(Roomtype.class);
+    }
+
+    @Override
+    public List<Roomtype> findByPeople(int people) {
+        em = getEntityManager();
+        try{
+            Query query = em.createNamedQuery("Roomtype.findByMaxPeople");
+            query.setParameter("maxPeople", people);
+            return query.getResultList();
+        }catch(Exception ex){
+            ex.printStackTrace();
+            return null;
+        }
     }
     
 }

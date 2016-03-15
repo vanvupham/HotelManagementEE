@@ -18,7 +18,7 @@ import session.RoomtypeFacadeLocal;
  *
  * @author Willi
  */
-public class RoomType {
+public class RoomTypeStub {
     RoomtypeFacadeLocal roomtypeFacade = lookupRoomtypeFacadeLocal();
 
     private RoomtypeFacadeLocal lookupRoomtypeFacadeLocal() {
@@ -57,6 +57,10 @@ public class RoomType {
 
     public int count() {
         return roomtypeFacade.count();
+    }
+
+    public List<Roomtype> findByPeople(int people) {
+        return roomtypeFacade.findByPeople(people);
     }
     
 }

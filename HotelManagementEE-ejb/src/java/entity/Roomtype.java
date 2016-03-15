@@ -35,8 +35,13 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Roomtype.findAll", query = "SELECT r FROM Roomtype r"),
     @NamedQuery(name = "Roomtype.findByRoomtypeId", query = "SELECT r FROM Roomtype r WHERE r.roomtypeId = :roomtypeId"),
     @NamedQuery(name = "Roomtype.findByRoomtypeName", query = "SELECT r FROM Roomtype r WHERE r.roomtypeName = :roomtypeName"),
+    @NamedQuery(name = "Roomtype.findByMaxPeople", query = "SELECT r FROM Roomtype r WHERE r.maxPeople >= :maxPeople"),    
     @NamedQuery(name = "Roomtype.findByPrice", query = "SELECT r FROM Roomtype r WHERE r.price = :price")})
 public class Roomtype implements Serializable {
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "maxPeople")
+    private int maxPeople;
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -125,6 +130,14 @@ public class Roomtype implements Serializable {
     @Override
     public String toString() {
         return "entity.Roomtype[ roomtypeId=" + roomtypeId + " ]";
+    }
+
+    public int getMaxPeople() {
+        return maxPeople;
+    }
+
+    public void setMaxPeople(int maxPeople) {
+        this.maxPeople = maxPeople;
     }
     
 }

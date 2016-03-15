@@ -17,7 +17,7 @@ import session.PromotionFacadeLocal;
  *
  * @author Willi
  */
-public class Promotion {
+public class PromotionStub {
     PromotionFacadeLocal promotionFacade = lookupPromotionFacadeLocal();
 
     private PromotionFacadeLocal lookupPromotionFacadeLocal() {

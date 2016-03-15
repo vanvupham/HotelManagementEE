@@ -6,9 +6,11 @@
 package session;
 
 import entity.Reservation;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -26,6 +28,19 @@ public class ReservationFacade extends AbstractFacade<Reservation> implements Re
 
     public ReservationFacade() {
         super(Reservation.class);
+    }
+
+    @Override
+    public List<Reservation> findByRoomId(int roomid) {
+        em = getEntityManager();
+        try{
+            Query query = em.createNamedQuery("Reservation.findByRoomId");
+            query.setParameter("roomId", roomid);
+            return query.getResultList();
+        }catch(Exception ex){
+            ex.printStackTrace();
+            return null;
+        }
     }
     
 }

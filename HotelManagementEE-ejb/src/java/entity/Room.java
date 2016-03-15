@@ -23,7 +23,6 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -39,6 +38,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Room.findByNumberOfBed", query = "SELECT r FROM Room r WHERE r.numberOfBed = :numberOfBed"),
     @NamedQuery(name = "Room.findByRoomPhone", query = "SELECT r FROM Room r WHERE r.roomPhone = :roomPhone"),
     @NamedQuery(name = "Room.findByDescription", query = "SELECT r FROM Room r WHERE r.description = :description"),
+    @NamedQuery(name = "Room.findByRoomTypeId", query = "SELECT r FROM Room r WHERE r.roomTypeId = :roomTypeId"),
     @NamedQuery(name = "Room.findByStatus", query = "SELECT r FROM Room r WHERE r.status = :status")})
 public class Room implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -141,24 +141,6 @@ public class Room implements Serializable {
 
     public void setStatus(String status) {
         this.status = status;
-    }
-
-    @XmlTransient
-    public List<Checkin> getCheckinList() {
-        return checkinList;
-    }
-
-    public void setCheckinList(List<Checkin> checkinList) {
-        this.checkinList = checkinList;
-    }
-
-    @XmlTransient
-    public List<Reservation> getReservationList() {
-        return reservationList;
-    }
-
-    public void setReservationList(List<Reservation> reservationList) {
-        this.reservationList = reservationList;
     }
 
     public Roomtype getRoomTypeId() {

@@ -5,11 +5,14 @@
  */
 package managedbean;
 
+import entity.Room;
 import entity.Roomtype;
+import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
-import stub.RoomType;
+import stub.RoomTypeStub;
 
 /**
  *
@@ -18,56 +21,81 @@ import stub.RoomType;
 @ManagedBean
 @RequestScoped
 public class RoomTypeManagedBean {
-    private RoomType roomType;
-    private String message;
+    private Roomtype roomType;
+    private List<Roomtype> listRoomTypeByPeople;
     /**
      * Creates a new instance of RoomTypeManagedBean
      */
     public RoomTypeManagedBean() {
+        roomType = new Roomtype();
+        listRoomTypeByPeople = new ArrayList<Roomtype>();
     }
 
-    public void create(Roomtype roomtype) {
-        roomType.create(roomtype);
+    public Integer getRoomtypeId() {
+        return roomType.getRoomtypeId();
     }
 
-    public void edit(Roomtype roomtype) {
-        roomType.edit(roomtype);
+    public void setRoomtypeId(Integer roomtypeId) {
+        roomType.setRoomtypeId(roomtypeId);
     }
 
-    public void remove(Roomtype roomtype) {
-        roomType.remove(roomtype);
+    public String getRoomtypeName() {
+        return roomType.getRoomtypeName();
     }
 
-    public Roomtype find(Object id) {
-        return roomType.find(id);
+    public void setRoomtypeName(String roomtypeName) {
+        roomType.setRoomtypeName(roomtypeName);
     }
 
-    public List<Roomtype> findAll() {
-        return roomType.findAll();
+    public BigDecimal getPrice() {
+        return roomType.getPrice();
     }
 
-    public List<Roomtype> findRange(int[] range) {
-        return roomType.findRange(range);
+    public void setPrice(BigDecimal price) {
+        roomType.setPrice(price);
     }
 
-    public int count() {
-        return roomType.count();
+    public List<Room> getRoomList() {
+        return roomType.getRoomList();
     }
 
-    public RoomType getRoomType() {
+    public void setRoomList(List<Room> roomList) {
+        roomType.setRoomList(roomList);
+    }
+
+    public int getMaxPeople() {
+        return roomType.getMaxPeople();
+    }
+
+    public void setMaxPeople(int maxPeople) {
+        roomType.setMaxPeople(maxPeople);
+    }
+
+    public Roomtype getRoomType() {
         return roomType;
     }
 
-    public void setRoomType(RoomType roomType) {
+    public void setRoomType(Roomtype roomType) {
         this.roomType = roomType;
     }
 
-    public String getMessage() {
-        return message;
+    public List<Roomtype> getListRoomTypeByPeople() {
+        return listRoomTypeByPeople;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setListRoomTypeByPeople(List<Roomtype> listRoomTypeByPeople) {
+        this.listRoomTypeByPeople = listRoomTypeByPeople;
+    }
+    
+    public List<Roomtype> findRoomTypeByPeople(){
+        try{
+           RoomTypeStub roomtypeStub = new RoomTypeStub();
+           listRoomTypeByPeople = roomtypeStub.findByPeople(getMaxPeople());
+           return listRoomTypeByPeople;
+        }catch(Exception ex){
+            ex.printStackTrace();
+            return null;
+        }
     }
     
 }

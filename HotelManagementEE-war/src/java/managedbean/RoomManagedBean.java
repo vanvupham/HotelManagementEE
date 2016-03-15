@@ -5,13 +5,14 @@
  */
 package managedbean;
 
-import entity.Checkin;
-import entity.Reservation;
 import entity.Room;
 import entity.Roomtype;
+import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import stub.RoomStub;
+import stub.RoomTypeStub;
 
 /**
  *
@@ -20,12 +21,23 @@ import javax.faces.bean.RequestScoped;
 @ManagedBean
 @RequestScoped
 public class RoomManagedBean {
+
     private Room room;
-    private String message;
+    private int typeId;
+    private List<Room> listRoomByRoomTypeId,listAllRoom,listRoomEmpty;
+    private List<Roomtype> listRoomTypeByPeople;
+    
+    private int person;
+
     /**
      * Creates a new instance of RoomManagedBean
      */
     public RoomManagedBean() {
+        room = new Room();
+        listRoomByRoomTypeId = new ArrayList<Room>();
+        listAllRoom = new ArrayList<Room>();
+        listRoomTypeByPeople = new ArrayList<Roomtype>();
+        listRoomEmpty = new ArrayList<Room>();
     }
 
     public Integer getRoomId() {
@@ -76,22 +88,6 @@ public class RoomManagedBean {
         room.setStatus(status);
     }
 
-    public List<Checkin> getCheckinList() {
-        return room.getCheckinList();
-    }
-
-    public void setCheckinList(List<Checkin> checkinList) {
-        room.setCheckinList(checkinList);
-    }
-
-    public List<Reservation> getReservationList() {
-        return room.getReservationList();
-    }
-
-    public void setReservationList(List<Reservation> reservationList) {
-        room.setReservationList(reservationList);
-    }
-
     public Roomtype getRoomTypeId() {
         return room.getRoomTypeId();
     }
@@ -100,21 +96,62 @@ public class RoomManagedBean {
         room.setRoomTypeId(roomTypeId);
     }
 
-    public Room getRoom() {
-        return room;
+    public List<Room> getListRoomByRoomTypeId() {
+        return listRoomByRoomTypeId;
     }
 
-    public void setRoom(Room room) {
-        this.room = room;
+    public void setListRoomByRoomTypeId(List<Room> listRoomByRoomTypeId) {
+        this.listRoomByRoomTypeId = listRoomByRoomTypeId;
     }
 
-    public String getMessage() {
-        return message;
+    public int getTypeId() {
+        return typeId;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setTypeId(int typeId) {
+        this.typeId = typeId;
     }
 
+    public int getPerson() {
+        return person;
+    }
+
+    public void setPerson(int person) {
+        this.person = person;
+    }
     
+    public List<Room> findRoomByRoomTypeId(){
+        try{
+            RoomStub roomStub = new RoomStub();
+            RoomTypeStub roomtypeStub = new RoomTypeStub();
+            listAllRoom = roomStub.findAll();
+            listRoomTypeByPeople = roomtypeStub.findByPeople(getPerson());
+            for(Roomtype roomType : listRoomTypeByPeople){
+                for(Room room : listAllRoom){
+                    if(room.getRoomTypeId().getRoomtypeId() == roomType.getRoomtypeId()){
+                        listRoomByRoomTypeId.add(room);
+                    }
+                }
+            }
+            return listRoomByRoomTypeId;
+        }catch(Exception ex){
+            ex.printStackTrace();
+            return null;
+        }
+    }
+    
+//    public List<Room> findRoomByRoomTypeId() {
+//        try {
+//            RoomStub roomStub = new RoomStub();
+//            RoomTypeStub roomtypeStub = new RoomTypeStub();
+//            listRoomTypeByPeople = roomtypeStub.findByPeople(getPerson());
+//            for(Roomtype type : listRoomTypeByPeople){
+//            listRoomByRoomTypeId = roomStub.findByRoomTypeId(type.getRoomtypeId());
+//            }
+//            return listRoomByRoomTypeId;
+//        } catch (Exception ex) {
+//            ex.printStackTrace();
+//            return null;
+//        }
+//    }
 }
