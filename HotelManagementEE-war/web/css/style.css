@@ -2594,3 +2594,14 @@ select.arrival{
         height: 89px;
     }
 }
+.tableroom{
+    margin: 0 auto;
+    margin-top: 50px;
+    width: 90%;
+}
+.tableroom th{
+    text-align: center;
+    background-color: #32A2E3;
+    color: white;  
+    height: 50px;
+}

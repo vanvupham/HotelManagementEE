@@ -217,7 +217,7 @@ public class ReservationManagedBean {
         this.roomsDouble = roomsDouble;
     }
     
-    public List<Room> findRoomForReservation(Date start, Date end) {
+    public String findRoomForReservation(Date start, Date end) {
         try {
             RoomStub roomStub = new RoomStub();
             RoomTypeStub roomtypeStub = new RoomTypeStub();
@@ -283,7 +283,7 @@ public class ReservationManagedBean {
                     roomsDouble++;
                 }
             }
-            return listRoomEmpty;
+            return "bookingroom";
         } catch (Exception ex) {
             ex.printStackTrace();
             return null;
